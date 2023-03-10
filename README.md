@@ -5,6 +5,8 @@ npm i
 npm run test:e2e
 ```
 
+While our individual services (`GoogleService` and `AppleService`) get the correct `HttpService` instances, we're trying to figure out how to spy on those specific instances in the context of a broader `app` during integration testing.
+
 Output:
 
 ```
