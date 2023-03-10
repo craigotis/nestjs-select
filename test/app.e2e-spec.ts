@@ -22,7 +22,7 @@ describe('App', () => {
   test('Google says hello', async () => {
     const httpServiceForGoogle = app.select(GoogleModule).get(HttpService);
     console.log(
-      'HTTP Service has baseURL: ',
+      'The HttpService we found for GoogleModule using select() has baseURL:',
       httpServiceForGoogle.axiosRef.defaults.baseURL,
     );
     const getterSpy = jest.spyOn(httpServiceForGoogle, 'get');
@@ -33,7 +33,7 @@ describe('App', () => {
   test('Apple says hello', async () => {
     const httpServiceForApple = app.select(AppleModule).get(HttpService);
     console.log(
-      'HTTP Service has baseURL: ',
+      'The HttpService we found for AppleModule using select() has baseURL:',
       httpServiceForApple.axiosRef.defaults.baseURL,
     );
     const getterSpy = jest.spyOn(httpServiceForApple, 'get');
