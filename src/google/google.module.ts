@@ -1,0 +1,13 @@
+import { HttpModule } from '@nestjs/axios';
+import { Module } from '@nestjs/common';
+import { GoogleService } from './google.service';
+
+@Module({
+  imports: [
+    HttpModule.register({
+      baseURL: 'https://www.google.com',
+    }),
+  ],
+  providers: [GoogleService],
+})
+export class GoogleModule {}
