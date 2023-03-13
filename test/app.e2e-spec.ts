@@ -40,4 +40,30 @@ describe('App', () => {
     await app.get(AppleService).sayHello();
     expect(getterSpy).toHaveBeenCalledTimes(1);
   });
+
+  test('[strict] Google says hello', async () => {
+    const httpServiceForGoogle = app
+      .select(GoogleModule)
+      .get(HttpService, { strict: true });
+    console.log(
+      'The HttpService we found for GoogleModule using select() has baseURL:',
+      httpServiceForGoogle.axiosRef.defaults.baseURL,
+    );
+    const getterSpy = jest.spyOn(httpServiceForGoogle, 'get');
+    await app.get(GoogleService).sayHello();
+    expect(getterSpy).toHaveBeenCalledTimes(1);
+  });
+
+  test('[strict] Apple says hello', async () => {
+    const httpServiceForApple = app
+      .select(AppleModule)
+      .get(HttpService, { strict: true });
+    console.log(
+      'The HttpService we found for AppleModule using select() has baseURL:',
+      httpServiceForApple.axiosRef.defaults.baseURL,
+    );
+    const getterSpy = jest.spyOn(httpServiceForApple, 'get');
+    await app.get(AppleService).sayHello();
+    expect(getterSpy).toHaveBeenCalledTimes(1);
+  });
 });
